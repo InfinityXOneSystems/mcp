@@ -1,0 +1,14 @@
+{
+  "name": "github",
+  "status": "fail",
+  "checks": [
+    {
+      "check": "user_auth",
+      "result": false
+    },
+    {
+      "check": "list_repos",
+      "result": false
+    }
+  ]
+}

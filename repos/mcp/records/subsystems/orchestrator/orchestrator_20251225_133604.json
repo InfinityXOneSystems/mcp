@@ -1,0 +1,15 @@
+{
+  "name": "orchestrator",
+  "status": "success",
+  "checks": [
+    {
+      "check": "endpoint_present",
+      "result": true
+    },
+    {
+      "check": "status_endpoint",
+      "result": "pending"
+    }
+  ],
+  "note": null
+}

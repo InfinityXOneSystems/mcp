@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+/.venv
+*/.venv
+
+# Local env files
+.env
+.env.local
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+
+# OS files
+Thumbs.db
+.DS_Store
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+/.venv
+*/.venv
+
+# Local env files
+.env
+.env.local
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Python build artifacts
+*$py.class
+*.so
+.Python
+ENV/
+build/
+dist/
+
+# Database - too large for Git
+mcp_memory.db
+mcp_memory.db-journal
+*.db
+*.db-journal
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Credentials - NEVER commit
+credentials*.json
+*-credentials.json
+*.key
+service-account*.json
+
+# GitHub App Secrets - NEVER COMMIT
+.github-app-config.json
+.github-app-private-key.pem
+*private-key*.pem
+github-app-private-key.pem
+
+# Firebase secrets (client/admin) - NEVER COMMIT
+firebase_config.json
+firebase-admin-sa.json
+
+# P1 Secrets Hygiene
+credentials-gcp-local.json
+secrets_infinityxone_credentials.json
+
+# Ignore local secrets and service account JSONs
+secrets/

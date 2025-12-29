@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>MCP Quick Dashboard</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;max-width:920px;margin:24px auto;padding:0 16px;}
+    label{display:block;margin-top:12px;font-weight:600}
+    input[type=text], textarea{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:6px}
+    button{margin-top:8px;padding:8px 12px;border-radius:6px;border:none;background:#0366d6;color:#fff;cursor:pointer}
+    pre{background:#f6f8fa;padding:12px;border-radius:6px;overflow:auto}
+    .row{display:flex;gap:8px;align-items:center}
+    .muted{color:#666;font-size:13px}
+  </style>
+</head>
+<body>
+  <h2>MCP — Quick Dashboard</h2>
+  <p class="muted">Set your gateway base URL (e.g. http://localhost:8000 or the demo server at http://localhost:9000)</p>
+
+  <label>Gateway Base URL
+    <input id="baseUrl" type="text" value="http://localhost:9000" />
+  </label>
+
+  <div class="row">
+    <button id="btnHealth">Check /health</button>
+    <button id="btnPredict">Send /predict demo</button>
+    <button id="btnClear">Clear</button>
+  </div>
+
+  <label>Predict Payload (JSON)
+    <textarea id="payload" rows="6">{"query":"What emerging tech will impact healthcare in 5 years?"}</textarea>
+  </label>
+
+  <label>Response
+    <pre id="response">No response yet.</pre>
+  </label>
+
+  <script>
+    const byId = id => document.getElementById(id);
+    const baseInput = byId('baseUrl');
+    const resp = byId('response');
+
+    async function safeFetch(url, opts) {
+      try {
+        const r = await fetch(url, opts);
+        const ct = r.headers.get('content-type')||'';
+        if (ct.includes('application/json')) return r.json();
+        return { status: r.status, text: await r.text() };
+      } catch (e) { return { error: String(e) }; }
+    }
+
+    async function checkHealth(){
+      const base = baseInput.value.trim();
+      if(!base) return alert('Set base URL');
+      const url = new URL('/api/proxy/health', base).href;
+      const j = await safeFetch(url);
+      resp.textContent = JSON.stringify(j, null, 2);
+    }
+
+    async function sendPredict(){
+      const base = baseInput.value.trim();
+      if(!base) return alert('Set base URL');
+      let body;
+      try { body = JSON.parse(byId('payload').value); } catch(e){ return alert('Invalid JSON payload'); }
+      const url = new URL('/api/proxy/predict', base).href;
+      const j = await safeFetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ base_url: base, payload: body }) });
+      resp.textContent = JSON.stringify(j, null, 2);
+      const spoken = j && (j.spoken || (j.content && j.content.spoken));
+      if(spoken){
+        try{
+          const ut = new SpeechSynthesisUtterance(typeof spoken === 'string' ? spoken : JSON.stringify(spoken));
+          speechSynthesis.cancel();
+          speechSynthesis.speak(ut);
+        }catch(e){
+          console.warn('TTS failed', e);
+        }
+      }
+    }
+
+    byId('btnHealth').addEventListener('click', checkHealth);
+    byId('btnPredict').addEventListener('click', sendPredict);
+    byId('btnClear').addEventListener('click', ()=>resp.textContent='');
+  </script>
+</body>
+</html>

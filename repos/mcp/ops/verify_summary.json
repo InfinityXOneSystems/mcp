@@ -1,0 +1,12 @@
+﻿{
+    "flagged":  {
+                    "secrets/infinity-x-one-systems-sa.json":  {
+
+                                                               },
+                    ".secrets/infinity-x-one-systems-sa.json":  "eab99428bd53c748ca287db97263524208547718"
+                },
+    "localRepository":  "C:\\AI\\repos\\mcp",
+    "localHead":  "eab99428bd53c748ca287db97263524208547718",
+    "remoteRef":  "714102267351f49a5e517d3caafafcc7cef58d41\trefs/heads/main",
+    "recent":  "eab9942 wip: remove secret files from index (pre-filter)\n7352e13 data\n37805aa sync\nad570ba crawl\ne5255cd fcommit\n8c4e67f chore: add opentelemetry otlp exporter to requirements\nca00e65 chore: add opentelemetry dependencies to fix Cloud Run startup\n42008bd update\n7141022 fix\n7cc2277 heal"
+}
