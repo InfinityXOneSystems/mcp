@@ -1,0 +1,58 @@
+# Python Dependencies for AI Agent Ecosystem
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+requests>=2.28.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+click>=8.1.0
+
+# Git and version control
+GitPython>=3.1.0
+gitpython>=3.1.0
+
+# Cloud providers
+google-cloud-storage>=2.7.0
+google-auth>=2.17.0
+boto3>=1.26.0
+azure-storage-blob>=12.14.0
+
+# System monitoring
+psutil>=5.9.0
+docker>=6.0.0
+
+# Data processing
+pandas>=1.5.0
+numpy>=1.24.0
+
+# Testing and validation
+pytest>=7.2.0
+flake8>=6.0.0
+black>=23.0.0
+mypy>=1.0.0
+
+# Logging and monitoring
+structlog>=23.1.0
+sentry-sdk>=1.15.0
+
+# Web frameworks (if needed)
+fastapi>=0.88.0
+uvicorn>=0.20.0
+
+# Database (optional)
+sqlalchemy>=2.0.0
+alembic>=1.10.0
+
+# Security
+cryptography>=41.0.0
+bcrypt>=4.0.0
+PyJWT>=2.6.0
+
+# Utilities
+schedule>=1.2.0
+tenacity>=8.1.0
+tqdm>=4.64.0
+
+# Development
+pytest-cov>=4.0.0
+pre-commit>=3.0.0
